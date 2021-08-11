@@ -27,8 +27,7 @@ function genApi (s) {
     const m = s.definition.methods[k]
     const params = Array.isArray(m.params) ? m.params : m.params?.items ? m.params.items : []
     const paramsStr = params.map(p => p.name).join(', ')
-    const res = m.response ? m.response.type : 'void'
-    lines.push(`  - \`${k}(${paramsStr}): Promise<${res}>\``)
+    lines.push(`  - \`${k}(${paramsStr})\``)
     lines.push(`    - ${s.definition.methods[k].description}`)
   }
   return lines.join('\n')

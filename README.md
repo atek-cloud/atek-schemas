@@ -12,91 +12,91 @@ This is a working directory of the Austin project's core schemas. Everything is 
 ## APIs
 
 - Account Session API
-  - `whoami(): Promise<object>`
+  - `whoami()`
     - Get the user account attached to the current session cookie.
-  - `login(opts): Promise<void>`
+  - `login(opts)`
     - Create a new session.
-  - `logout(): Promise<void>`
+  - `logout()`
     - Destroys the current session.
 - Services Control and Management API
-  - `list(): Promise<object>`
+  - `list()`
     - List all installed services.
-  - `get(id): Promise<object>`
+  - `get(id)`
     - Fetch information about an installed service.
-  - `install(opts): Promise<object>`
+  - `install(opts)`
     - Install a new service.
-  - `uninstall(id): Promise<void>`
+  - `uninstall(id)`
     - Uninstall a service.
-  - `configure(id, opts): Promise<void>`
+  - `configure(id, opts)`
     - Change the settings of a service.
-  - `start(id): Promise<void>`
+  - `start(id)`
     - Start a service process.
-  - `stop(id): Promise<void>`
+  - `stop(id)`
     - Stop a service process.
-  - `restart(id): Promise<void>`
+  - `restart(id)`
     - Restart a service process.
-  - `checkForPackageUpdates(id): Promise<object>`
+  - `checkForPackageUpdates(id)`
     - Query the source package for software updates.
-  - `updatePackage(id): Promise<object>`
+  - `updatePackage(id)`
     - Update the service to the highest version which matches "desiredVersion".
 - Accounts API
-  - `create(opts): Promise<object>`
+  - `create(opts)`
     - Create a new user account.
-  - `list(): Promise<object>`
+  - `list()`
     - List all user accounts.
-  - `get(id): Promise<object>`
+  - `get(id)`
     - Get a user account by its ID.
-  - `getByUsername(username): Promise<object>`
+  - `getByUsername(username)`
     - Get a user account by its username.
-  - `delete(id): Promise<void>`
+  - `delete(id)`
     - Delete a user account.
 - System API
-  - `getBucket(bucketId): Promise<object>`
+  - `getBucket(bucketId)`
     - Enumerate information attached to a "bucket" namespace. This can include databases and other buckets.
 - Austin DataBase API
-  - `describe(dbId): Promise<object>`
+  - `describe(dbId)`
     - Get metadata and information about a database.
-  - `list(dbId, tableId): Promise<object>`
+  - `list(dbId, tableId)`
     - List records in a table.
-  - `get(dbId, tableId, key): Promise<object>`
+  - `get(dbId, tableId, key)`
     - Get a record in a table.
-  - `create(dbId, tableId, value, blobs): Promise<object>`
+  - `create(dbId, tableId, value, blobs)`
     - Add a record to a table.
-  - `put(dbId, tableId, key, value): Promise<object>`
+  - `put(dbId, tableId, key, value)`
     - Write a record to a table.
-  - `delete(dbId, tableId, key): Promise<void>`
+  - `delete(dbId, tableId, key)`
     - Delete a record from a table.
-  - `diff(dbId, opts): Promise<undefined>`
+  - `diff(dbId, opts)`
     - Enumerate the differences between two versions of the database.
-  - `getBlob(dbId, tableId, key, blobName): Promise<object>`
+  - `getBlob(dbId, tableId, key, blobName)`
     - Get a blob of a record.
-  - `putBlob(dbId, tableId, key, blobName, value): Promise<void>`
+  - `putBlob(dbId, tableId, key, blobName, value)`
     - Write a blob of a record.
-  - `delBlob(dbId, tableId, key, blobName): Promise<void>`
+  - `delBlob(dbId, tableId, key, blobName)`
     - Delete a blob of a record.
 - Hypercore API
-  - `create(): Promise<object>`
+  - `create()`
     - Create a new hypercore.
-  - `describe(key): Promise<object>`
+  - `describe(key)`
     - Return information about a hypercore.
-  - `append(key, data): Promise<number>`
+  - `append(key, data)`
     - Append a block or array of blocks to the hypercore.
-  - `get(key, index, options): Promise<string>`
+  - `get(key, index, options)`
     - Get a block of data from the feed.
-  - `cancel(key, getCallId): Promise<void>`
+  - `cancel(key, getCallId)`
     - Cancel a `get()` operation.
-  - `has(key, index): Promise<boolean>`
+  - `has(key, index)`
     - Check if the feed has a specific block.
-  - `download(key, start, end, options): Promise<void>`
+  - `download(key, start, end, options)`
     - Select a range to be downloaded.
-  - `undownload(key, downloadCallId): Promise<void>`
+  - `undownload(key, downloadCallId)`
     - Cancel a `download()` operation.
-  - `downloaded(key, start, end): Promise<number>`
+  - `downloaded(key, start, end)`
     - Returns total number of downloaded blocks within range. If `end` is not specified it will default to the total number of blocks. If `start` is not specified it will default to 0.
-  - `update(key, opts): Promise<void>`
+  - `update(key, opts)`
     - Fetch an update for the feed.
-  - `seek(key, byteOffset): Promise<object>`
+  - `seek(key, byteOffset)`
     - Seek to a byte offset. Responds with `index` and `relativeOffset`, where index is the data block the byteOffset is contained in and relativeOffset is the relative byte offset in the data block.
-  - `configureNetwork(key, opts): Promise<void>`
+  - `configureNetwork(key, opts)`
     - Configure the networking behavior for a specific hypercore.
 
