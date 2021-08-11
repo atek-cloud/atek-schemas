@@ -1,0 +1,102 @@
+# Austin Schemas
+
+This is a working directory of the Austin project's core schemas. Everything is subject to change.
+
+## Database Records
+
+- Service: Service installed to a host environment.
+- Database: Settings and cached state for a database.
+- Account: Internal record of user account registration.
+- Account Session: Internal record of a session with a user account.
+
+## APIs
+
+- Account Session API
+  - `whoami(): Promise<object>`
+    - Get the user account attached to the current session cookie.
+  - `login(opts): Promise<void>`
+    - Create a new session.
+  - `logout(): Promise<void>`
+    - Destroys the current session.
+- Services Control and Management API
+  - `list(): Promise<object>`
+    - List all installed services.
+  - `get(id): Promise<object>`
+    - Fetch information about an installed service.
+  - `install(opts): Promise<object>`
+    - Install a new service.
+  - `uninstall(id): Promise<void>`
+    - Uninstall a service.
+  - `configure(id, opts): Promise<void>`
+    - Change the settings of a service.
+  - `start(id): Promise<void>`
+    - Start a service process.
+  - `stop(id): Promise<void>`
+    - Stop a service process.
+  - `restart(id): Promise<void>`
+    - Restart a service process.
+  - `checkForPackageUpdates(id): Promise<object>`
+    - Query the source package for software updates.
+  - `updatePackage(id): Promise<object>`
+    - Update the service to the highest version which matches "desiredVersion".
+- Accounts API
+  - `create(opts): Promise<object>`
+    - Create a new user account.
+  - `list(): Promise<object>`
+    - List all user accounts.
+  - `get(id): Promise<object>`
+    - Get a user account by its ID.
+  - `getByUsername(username): Promise<object>`
+    - Get a user account by its username.
+  - `delete(id): Promise<void>`
+    - Delete a user account.
+- System API
+  - `getBucket(bucketId): Promise<object>`
+    - Enumerate information attached to a "bucket" namespace. This can include databases and other buckets.
+- Austin DataBase API
+  - `describe(dbId): Promise<object>`
+    - Get metadata and information about a database.
+  - `list(dbId, tableId): Promise<object>`
+    - List records in a table.
+  - `get(dbId, tableId, key): Promise<object>`
+    - Get a record in a table.
+  - `create(dbId, tableId, value, blobs): Promise<object>`
+    - Add a record to a table.
+  - `put(dbId, tableId, key, value): Promise<object>`
+    - Write a record to a table.
+  - `delete(dbId, tableId, key): Promise<void>`
+    - Delete a record from a table.
+  - `diff(dbId, opts): Promise<undefined>`
+    - Enumerate the differences between two versions of the database.
+  - `getBlob(dbId, tableId, key, blobName): Promise<object>`
+    - Get a blob of a record.
+  - `putBlob(dbId, tableId, key, blobName, value): Promise<void>`
+    - Write a blob of a record.
+  - `delBlob(dbId, tableId, key, blobName): Promise<void>`
+    - Delete a blob of a record.
+- Hypercore API
+  - `create(): Promise<object>`
+    - Create a new hypercore.
+  - `describe(key): Promise<object>`
+    - Return information about a hypercore.
+  - `append(key, data): Promise<number>`
+    - Append a block or array of blocks to the hypercore.
+  - `get(key, index, options): Promise<string>`
+    - Get a block of data from the feed.
+  - `cancel(key, getCallId): Promise<void>`
+    - Cancel a `get()` operation.
+  - `has(key, index): Promise<boolean>`
+    - Check if the feed has a specific block.
+  - `download(key, start, end, options): Promise<void>`
+    - Select a range to be downloaded.
+  - `undownload(key, downloadCallId): Promise<void>`
+    - Cancel a `download()` operation.
+  - `downloaded(key, start, end): Promise<number>`
+    - Returns total number of downloaded blocks within range. If `end` is not specified it will default to the total number of blocks. If `start` is not specified it will default to 0.
+  - `update(key, opts): Promise<void>`
+    - Fetch an update for the feed.
+  - `seek(key, byteOffset): Promise<object>`
+    - Seek to a byte offset. Responds with `index` and `relativeOffset`, where index is the data block the byteOffset is contained in and relativeOffset is the relative byte offset in the data block.
+  - `configureNetwork(key, opts): Promise<void>`
+    - Configure the networking behavior for a specific hypercore.
+
