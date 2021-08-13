@@ -1,6 +1,6 @@
-# Austin Schemas
+# Atek Schemas
 
-This is a working directory of the Austin project's core schemas. Everything is subject to change.
+This is a working directory of the Atek project's core schemas. Everything is subject to change.
 
 ## Database Records
 

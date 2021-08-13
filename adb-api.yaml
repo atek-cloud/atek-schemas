@@ -1,4 +1,4 @@
-id: austin.com/adb-api
+id: atek.cloud/adb-api
 type: api
 title: Austin DataBase API
 definition:
@@ -21,7 +21,7 @@ definition:
           tables:
             type: array
             items:
-              $ref: "https://austin.com/apdl-schema.json"
+              $ref: "https://atek.cloud/apdl-schema.json"
     list:
       description: List records in a table.
       params:

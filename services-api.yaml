@@ -1,4 +1,4 @@
-id: austin.com/services-api
+id: atek.cloud/services-api
 type: api
 title: Services Control and Management API
 definition:
@@ -15,7 +15,7 @@ definition:
               properties:
                 status: {type: "string", enum: ["inactive", "active"]}
                 settings:
-                  $ref: "https://austin.com/.well-known/apdl/service.json#/definition"
+                  $ref: "https://atek.cloud/.well-known/apdl/service.json#/definition"
     get:
       description: Fetch information about an installed service.
       params:
@@ -26,7 +26,7 @@ definition:
         properties:
           status: {type: "string", enum: ["inactive", "active"]}
           settings:
-            $ref: "https://austin.com/.well-known/apdl/service.json#/definition"
+            $ref: "https://atek.cloud/.well-known/apdl/service.json#/definition"
     install:
       description: Install a new service.
       params:
@@ -46,7 +46,7 @@ definition:
         properties:
           status: {type: "string", enum: ["inactive", "active"]}
           settings:
-            $ref: "https://austin.com/.well-known/apdl/service.json#/definition"
+            $ref: "https://atek.cloud/.well-known/apdl/service.json#/definition"
     uninstall:
       description: Uninstall a service.
       params:

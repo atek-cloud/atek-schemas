@@ -7,9 +7,9 @@ for (const entry of Deno.readDirSync('.')) {
   schemas.push(parse(text))
 }
 
-console.log(`# Austin Schemas
+console.log(`# Atek Schemas
 
-This is a working directory of the Austin project's core schemas. Everything is subject to change.
+This is a working directory of the Atek project's core schemas. Everything is subject to change.
 
 ## Database Records
 
