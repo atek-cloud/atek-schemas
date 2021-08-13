@@ -21,7 +21,7 @@ definition:
           tables:
             type: array
             items:
-              $ref: "https://atek.cloud/apdl-schema.json"
+              $ref: "https://atek.cloud/apdl-adb-record-schema.json"
     list:
       description: List records in a table.
       params:
