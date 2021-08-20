@@ -53,7 +53,7 @@ This is a working directory of the Atek project's core schemas. Everything is su
 - System API
   - `getBucket(bucketId)`
     - Enumerate information attached to a "bucket" namespace. This can include databases and other buckets.
-- Austin DataBase API
+- Atek DataBase API
   - `describe(dbId)`
     - Get metadata and information about a database.
   - `list(dbId, tableId)`

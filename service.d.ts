@@ -22,16 +22,30 @@ export default interface Service {
     installedVersion?: string
     title?: string
   }
-  manifest?: {
-    name?: string
-    description?: string
-    author?: string
-    license?: string
-  }
+  manifest?: ServiceManifest
   system: {
     appPort: number
   }
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
+}
+
+export interface ServiceManifest {
+  runtime?: RuntimeEnum
+  name?: string
+  description?: string
+  author?: string
+  license?: string
+  exports?: ApiExportDesc[]
+}
+
+export interface ApiExportDesc {
+  api: string
+  path?: string
+}
+
+export enum RuntimeEnum {
+  deno = 'deno',
+  node = 'node'
 }
 
 export enum SourceTypeEnum {

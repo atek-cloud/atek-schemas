@@ -1,12 +1,15 @@
 /*
 id: atek.cloud/adb-api
 type: api
-title: Austin DataBase API
+title: Atek DataBase API
 */
 
 export default interface AdbApi {
   // Get metadata and information about a database.
   describe (dbId: string): Promise<DbDescription>
+
+  // Register a table's schema and metadata. 
+  table (dbId: string, tableId: string, desc: TableSettings): Promise<TableDescription>
 
   // List records in a table.
   list (dbId: string, tableId: string): Promise<{records: Record[]}>
@@ -50,11 +53,26 @@ export interface DbDescription {
   tables: TableDescription[]
 }
 
-export interface TableDescription {
+export interface TableTemplates {
+  table?: {
+    title?: string
+    description?: string
+  },
+  record?: {
+    key?: string
+    title?: string
+    description?: string
+  }
+}
+
+export interface TableSettings {
+  revision?: number
+  templates?: TableTemplates
+  definition?: object
+}
+
+export interface TableDescription extends TableSettings {
   tableId: string
-  title?: string
-  description?: string
-  recordSchema: object
 }
 
 export interface Record {
