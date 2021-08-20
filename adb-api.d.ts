@@ -12,7 +12,7 @@ export default interface AdbApi {
   table (dbId: string, tableId: string, desc: TableSettings): Promise<TableDescription>
 
   // List records in a table.
-  list (dbId: string, tableId: string): Promise<{records: Record[]}>
+  list (dbId: string, tableId: string, opts?: ListOpts): Promise<{records: Record[]}>
 
   // Get a record in a table.
   get (dbId: string, tableId: string, key: string): Promise<Record>
@@ -79,8 +79,8 @@ export interface Record {
   key: string
   path: string
   url: string
-  seq: number
-  value: object
+  seq?: number
+  value: object | null | undefined
 }
 
 export interface BlobMap {
@@ -102,4 +102,13 @@ export interface Blob {
 export interface Diff {
   left: Record
   right: Record
+}
+
+export interface ListOpts {
+  lt?: string
+  lte?: string
+  gt?: string
+  gte?: string
+  limit?: number
+  reverse?: boolean
 }
