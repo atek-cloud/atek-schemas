@@ -2,7 +2,9 @@
 
 This is a working directory of the Atek project's core schemas.
 
-## account-session-api.d.ts
+## APIs
+
+### Account Session API
 
 ```typescript
 /*
@@ -32,62 +34,7 @@ interface WhoamiResponse {
 }
 ```
 
-## account-session.d.ts
-
-```typescript
-/*
-id: atek.cloud/account-session
-type: adb-record
-title: Account Session
-description: Internal record of a session with a user account.
-
-templates:
-  table:
-    title: "Accounts Sessions"
-    description: "Internal records of sessions with user accounts."
-  record:
-    key: "{{/sessionId}}"
-    title: "Session for {{/username}} created at {{/createdAt}}"
-*/
-
-export default interface AccountSession {
-  sessionId: string
-  accountId: string
-  createdAt: Date
-}
-```
-
-## account.d.ts
-
-```typescript
-/*
-id: atek.cloud/account
-type: adb-record
-title: Account
-description: Internal record of user account registration.
-templates:
-  table:
-    title: "Accounts"
-    description: "Internal records of user account registrations."
-  record:
-    key: "{{/username}}"
-    title: "System account: {{/username}}"
-*/
-
-export default interface Account {
-  username: string
-  hashedPassword: string
-  role: Role
-}
-
-export enum Role {
-  none = '',
-  admin = 'admin'
-}
-
-```
-
-## accounts-api.d.ts
+### Accounts API
 
 ```typescript
 /*
@@ -120,7 +67,7 @@ export interface Account {
 }
 ```
 
-## adb-api.d.ts
+### Atek DataBase API
 
 ```typescript
 /*
@@ -239,7 +186,7 @@ export interface ListOpts {
 }
 ```
 
-## adb-ctrl-api.d.ts
+### Atek DataBase System Control API
 
 ```typescript
 /*
@@ -253,54 +200,7 @@ export default interface AdbCtrlApi {
 }
 ```
 
-## database.d.ts
-
-```typescript
-/*
-id: atek.cloud/database
-type: adb-record
-title: Database
-description: Settings and cached state for a database.
-templates:
-  table:
-    title: Databases
-    description: Settings and cached state for databases.
-  record:
-    key: "{{/dbId}}"
-    title: "Database ID: {{/dbId}}"
-*/
-
-export default interface Database {
-  dbId: string
-  cachedMeta?: {
-    displayName?: string
-    writable?: boolean
-  }
-  network?: {
-    access?: NetworkAccess
-  }
-  services?: ServiceConfig[]
-  createdBy?: {
-    accountId?: string
-    serviceId?: string
-  }
-  createdAt: Date
-}
-
-export interface ServiceConfig {
-  serviceId: string
-  alias?: string
-  persist?: boolean
-  presync?: boolean
-}
-
-export enum NetworkAccess {
-  private = 'private',
-  public = 'public'
-}
-```
-
-## hypercore-api.d.ts
+### Hypercore API
 
 ```typescript
 /*
@@ -423,7 +323,7 @@ export interface Peer {
 
 ```
 
-## ping-api.d.ts
+### Ping API
 
 ```typescript
 /*
@@ -441,66 +341,7 @@ export default interface PingApi {
 
 ```
 
-## service.d.ts
-
-```typescript
-/*
-id: atek.cloud/service
-type: adb-record
-title: Service
-description: Service installed to a host environment.
-templates:
-  table:
-    title: Services
-    description: Services installed to the host environment.
-  record:
-    key: "{{/id}}"
-    title: "Service \"{{/id}}\", source: {{/sourceUrl}}"
-*/
-
-export default interface Service {
-  id: string // pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
-  port: number
-  sourceUrl: URL
-  desiredVersion?: string
-  package: {
-    sourceType: SourceTypeEnum
-    installedVersion?: string
-    title?: string
-  }
-  manifest?: ServiceManifest
-  system: {
-    appPort: number
-  }
-  installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
-}
-
-export interface ServiceManifest {
-  runtime?: RuntimeEnum
-  name?: string
-  description?: string
-  author?: string
-  license?: string
-  exports?: ApiExportDesc[]
-}
-
-export interface ApiExportDesc {
-  api: string
-  path?: string
-}
-
-export enum RuntimeEnum {
-  deno = 'deno',
-  node = 'node'
-}
-
-export enum SourceTypeEnum {
-  file = 'file',
-  git = 'git'
-}
-```
-
-## services-api.d.ts
+### Services Control and Management API
 
 ```typescript
 /*
@@ -600,7 +441,7 @@ export enum SourceTypeEnum {
 }
 ```
 
-## system-api.d.ts
+### System API
 
 ```typescript
 /*
@@ -635,6 +476,171 @@ export enum BucketTypeEnum {
   db = 'db'
 }
 
+```
+
+
+
+## DB Tables
+
+### Account Session
+
+```typescript
+/*
+id: atek.cloud/account-session
+type: adb-record
+title: Account Session
+description: Internal record of a session with a user account.
+
+templates:
+  table:
+    title: "Accounts Sessions"
+    description: "Internal records of sessions with user accounts."
+  record:
+    key: "{{/sessionId}}"
+    title: "Session for {{/username}} created at {{/createdAt}}"
+*/
+
+export default interface AccountSession {
+  sessionId: string
+  accountId: string
+  createdAt: Date
+}
+```
+
+### Account
+
+```typescript
+/*
+id: atek.cloud/account
+type: adb-record
+title: Account
+description: Internal record of user account registration.
+templates:
+  table:
+    title: "Accounts"
+    description: "Internal records of user account registrations."
+  record:
+    key: "{{/username}}"
+    title: "System account: {{/username}}"
+*/
+
+export default interface Account {
+  username: string
+  hashedPassword: string
+  role: Role
+}
+
+export enum Role {
+  none = '',
+  admin = 'admin'
+}
+
+```
+
+### Database
+
+```typescript
+/*
+id: atek.cloud/database
+type: adb-record
+title: Database
+description: Settings and cached state for a database.
+templates:
+  table:
+    title: Databases
+    description: Settings and cached state for databases.
+  record:
+    key: "{{/dbId}}"
+    title: "Database ID: {{/dbId}}"
+*/
+
+export default interface Database {
+  dbId: string
+  cachedMeta?: {
+    displayName?: string
+    writable?: boolean
+  }
+  network?: {
+    access?: NetworkAccess
+  }
+  services?: ServiceConfig[]
+  createdBy?: {
+    accountId?: string
+    serviceId?: string
+  }
+  createdAt: Date
+}
+
+export interface ServiceConfig {
+  serviceId: string
+  alias?: string
+  persist?: boolean
+  presync?: boolean
+}
+
+export enum NetworkAccess {
+  private = 'private',
+  public = 'public'
+}
+```
+
+### Service
+
+```typescript
+/*
+id: atek.cloud/service
+type: adb-record
+title: Service
+description: Service installed to a host environment.
+templates:
+  table:
+    title: Services
+    description: Services installed to the host environment.
+  record:
+    key: "{{/id}}"
+    title: "Service \"{{/id}}\", source: {{/sourceUrl}}"
+*/
+
+export default interface Service {
+  id: string // pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
+  port: number
+  sourceUrl: URL
+  desiredVersion?: string
+  package: {
+    sourceType: SourceTypeEnum
+    installedVersion?: string
+    title?: string
+  }
+  manifest?: ServiceManifest
+  system: {
+    appPort: number
+  }
+  installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
+}
+
+export interface ServiceManifest {
+  runtime?: RuntimeEnum
+  name?: string
+  description?: string
+  author?: string
+  license?: string
+  exports?: ApiExportDesc[]
+}
+
+export interface ApiExportDesc {
+  api: string
+  path?: string
+}
+
+export enum RuntimeEnum {
+  deno = 'deno',
+  node = 'node'
+}
+
+export enum SourceTypeEnum {
+  file = 'file',
+  git = 'git'
+}
 ```
 
 
