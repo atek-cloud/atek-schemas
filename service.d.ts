@@ -41,6 +41,7 @@ export interface ServiceManifest {
 export interface ApiExportDesc {
   api: string
   path?: string
+  transport?: ApiTransportEnum
 }
 
 export enum RuntimeEnum {
@@ -51,4 +52,9 @@ export enum RuntimeEnum {
 export enum SourceTypeEnum {
   file = 'file',
   git = 'git'
+}
+
+export enum ApiTransportEnum {
+  rpc = 'rpc',
+  proxy = 'proxy'
 }
