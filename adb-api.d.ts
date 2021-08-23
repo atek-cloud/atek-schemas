@@ -1,7 +1,7 @@
 /*
 id: atek.cloud/adb-api
 type: api
-title: Atek DataBase API
+title: Atek Database API
 */
 
 export default interface AdbApi {
