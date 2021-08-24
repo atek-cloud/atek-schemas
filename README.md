@@ -67,13 +67,13 @@ export interface Account {
 }
 ```
 
-### Atek DataBase API
+### Atek Database API
 
 ```typescript
 /*
 id: atek.cloud/adb-api
 type: api
-title: Atek DataBase API
+title: Atek Database API
 */
 
 export default interface AdbApi {
@@ -186,17 +186,22 @@ export interface ListOpts {
 }
 ```
 
-### Atek DataBase System Control API
+### Atek Database System Control API
 
 ```typescript
 /*
 id: atek.cloud/adb-ctrl-api
 type: api
-title: Atek DataBase System Control API
+title: Atek Database System Control API
 */
 
 export default interface AdbCtrlApi {
-  getServerDatabaseId (): Promise<string>
+  init (settings: AdbSettings): Promise<void>
+  getConfig (): Promise<AdbSettings>
+}
+
+export interface AdbSettings {
+  serverDbId: string
 }
 ```
 
@@ -210,6 +215,22 @@ transport: proxy
 title: Hypercore API
 */
 
+```
+
+### Atek Inspection API
+
+```typescript
+/*
+id: atek.cloud/inspect-api
+type: api
+title: Atek Inspection API
+description: General debugging information for an endpoint
+*/
+
+export default interface InspectApi {
+  isReady (): Promise<boolean>
+  getConfig (): Promise<object>
+}
 ```
 
 ### Ping API
@@ -519,6 +540,7 @@ export interface ServiceManifest {
 export interface ApiExportDesc {
   api: string
   path?: string
+  transport?: ApiTransportEnum
 }
 
 export enum RuntimeEnum {
@@ -529,6 +551,11 @@ export enum RuntimeEnum {
 export enum SourceTypeEnum {
   file = 'file',
   git = 'git'
+}
+
+export enum ApiTransportEnum {
+  rpc = 'rpc',
+  proxy = 'proxy'
 }
 ```
 
