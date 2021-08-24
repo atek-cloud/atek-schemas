@@ -152,7 +152,7 @@ export interface Record {
   path: string
   url: string
   seq?: number
-  value: object | null | undefined
+  value: object
 }
 
 export interface BlobMap {
