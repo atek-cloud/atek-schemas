@@ -83,9 +83,6 @@ export interface ServiceRecord {
     author?: string
     license?: string
   }
-  system: {
-    appPort: number
-  }
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
 }
 

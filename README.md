@@ -374,9 +374,6 @@ export interface ServiceRecord {
     author?: string
     license?: string
   }
-  system: {
-    appPort: number
-  }
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
 }
 
@@ -557,9 +554,7 @@ export default interface Service {
     title?: string
   }
   manifest?: ServiceManifest
-  system: {
-    appPort: number
-  }
+  config?: ServiceConfig
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
 }
 
@@ -578,6 +573,10 @@ export interface ApiExportDesc {
   transport?: ApiTransportEnum
 }
 
+export interface ServiceConfig {
+  [key: string]: string
+}
+
 export enum RuntimeEnum {
   deno = 'deno',
   node = 'node'
@@ -592,6 +591,7 @@ export enum ApiTransportEnum {
   rpc = 'rpc',
   proxy = 'proxy'
 }
+
 ```
 
 

@@ -23,9 +23,6 @@ export default interface Service {
     title?: string
   }
   manifest?: ServiceManifest
-  system: {
-    appPort: number
-  },
   config?: ServiceConfig
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
 }
