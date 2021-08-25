@@ -24,13 +24,13 @@ export default interface Database {
   services?: ServiceConfig[]
   createdBy?: {
     accountId?: string
-    serviceId?: string
+    serviceKey?: string
   }
   createdAt: Date
 }
 
 export interface ServiceConfig {
-  serviceId: string
+  serviceKey: string
   alias?: string
   persist?: boolean
   presync?: boolean

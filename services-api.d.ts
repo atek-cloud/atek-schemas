@@ -57,11 +57,13 @@ export enum StatusEnum {
 
 export interface InstallOpts {
   sourceUrl: URL
+  id?: string
   desiredVersion?: string
   port?: number
 }
 
 export interface ConfigureOpts {
+  id?: string
   sourceUrl?: URL
   desiredVersion?: string
   port?: number

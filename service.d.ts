@@ -8,7 +8,6 @@ templates:
     title: Services
     description: Services installed to the host environment.
   record:
-    key: "{{/id}}"
     title: "Service \"{{/id}}\", source: {{/sourceUrl}}"
 */
 

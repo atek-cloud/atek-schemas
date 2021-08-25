@@ -348,11 +348,13 @@ export enum StatusEnum {
 
 export interface InstallOpts {
   sourceUrl: URL
+  id?: string
   desiredVersion?: string
   port?: number
 }
 
 export interface ConfigureOpts {
+  id?: string
   sourceUrl?: URL
   desiredVersion?: string
   port?: number
@@ -508,13 +510,13 @@ export default interface Database {
   services?: ServiceConfig[]
   createdBy?: {
     accountId?: string
-    serviceId?: string
+    serviceKey?: string
   }
   createdAt: Date
 }
 
 export interface ServiceConfig {
-  serviceId: string
+  serviceKey: string
   alias?: string
   persist?: boolean
   presync?: boolean
@@ -539,7 +541,6 @@ templates:
     title: Services
     description: Services installed to the host environment.
   record:
-    key: "{{/id}}"
     title: "Service \"{{/id}}\", source: {{/sourceUrl}}"
 */
 
