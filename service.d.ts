@@ -25,7 +25,8 @@ export default interface Service {
   manifest?: ServiceManifest
   system: {
     appPort: number
-  }
+  },
+  config?: ServiceConfig
   installedBy: string //  pattern: "^([a-zA-Z][a-zA-Z0-9-]{1,62}[a-zA-Z0-9])$"
 }
 
@@ -42,6 +43,10 @@ export interface ApiExportDesc {
   api: string
   path?: string
   transport?: ApiTransportEnum
+}
+
+export interface ServiceConfig {
+  [key: string]: string
 }
 
 export enum RuntimeEnum {
