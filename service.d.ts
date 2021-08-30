@@ -27,7 +27,6 @@ export default interface Service {
 }
 
 export interface ServiceManifest {
-  runtime?: RuntimeEnum
   name?: string
   description?: string
   author?: string
@@ -43,11 +42,6 @@ export interface ApiExportDesc {
 
 export interface ServiceConfig {
   [key: string]: string
-}
-
-export enum RuntimeEnum {
-  deno = 'deno',
-  node = 'node'
 }
 
 export enum SourceTypeEnum {
