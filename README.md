@@ -2,6 +2,10 @@
 
 This is a working directory of the Atek project's core schemas.
 
+## Deprecated
+
+This repo was used during an early version of Atek in which schemas were written as `d.ts` files and then generated using [tsgen](https://github.com/atek-cloud/tsgen). This was more complexity than we needed, so this approach has been deprecated.
+
 ## APIs
 
 ### Account Session API
